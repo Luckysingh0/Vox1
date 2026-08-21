@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Larger, pink-tinted arrow cursor for the PDF page — still the familiar
+   arrow shape (not a dot/circle), just bigger so it's easy to see exactly
+   where you're pointing. Kept at 32x32 (not larger) because many browsers
+   silently ignore custom cursors above that size and fall back to the
+   default arrow. Applied with !important because the text layer spans
+   underneath set their own `cursor: text`, which would otherwise win. */
+.pdf-big-cursor,
+.pdf-big-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Cpath d='M3 2 L3 20 L8 16 L11 22 L14 20.5 L11 14.5 L17 14.5 Z' fill='%23ec4899' stroke='white' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") 3 2, auto !important;
+}
+
+/* Custom text-selection color to match the accent theme */
+.thin-scrollbar ::selection,
+[data-page-num] ::selection {
+  background-color: rgba(184, 214, 58, 0.45); /* accent-400 at low opacity */
+}
+.thin-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 999px;
+}
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
